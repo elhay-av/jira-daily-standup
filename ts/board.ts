@@ -30,7 +30,7 @@ class ReplaceFilterBtn {
     }
 
     getFilter() {
-        const filters = this.getFilters();
+        const filters = ReplaceFilterBtn.getFilters();
         const filterIndex = this.getFilterIndex(filters);
 
         return jQuery(filters[filterIndex]);
@@ -44,13 +44,13 @@ class ReplaceFilterBtn {
         setTimeout(() => jQuery(filter).find('a')[0].click(), wait);
     }
 
-    private getFilters() {
+    static getFilters() {
         return jQuery(`${quickFiltersSelector} dd`)
             .has('a.js-quickfilter-button');
     }
 
     private replaceFilter() {
-        const filters = this.getFilters();
+        const filters = ReplaceFilterBtn.getFilters();
         const selected = this.getSelected(filters);
         let nextIndex = this.getFilterIndex(filters);
 
@@ -82,7 +82,6 @@ class ReplaceFilterBtn {
 
     private onClick() {
         this.replaceFilter();
-        this.updateText();
     }
 }
 
@@ -99,15 +98,17 @@ class DailyActions {
         const prevFilter = new ReplaceFilterBtn(true);
         const nextFilter = new ReplaceFilterBtn(false);
 
-        const prevBtn = prevFilter.getBtn();
-        const nextBtn = nextFilter.getBtn();
-
-        prevBtn.on('click', nextFilter.updateText());
-        nextBtn.on('click', prevFilter.updateText());
+        ReplaceFilterBtn
+            .getFilters()
+            .find('a')
+            .on('click', () => {
+                nextFilter.updateText();
+                prevFilter.updateText();
+            });
 
         jQuery(`.${DailyActions.className}`)
-            .prepend(prevBtn)
-            .append(nextBtn);
+            .prepend(prevFilter.getBtn())
+            .append(nextFilter.getBtn());
     }
 }
 
