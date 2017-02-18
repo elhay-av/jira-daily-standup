@@ -35,3 +35,9 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+plugin/board.js
+plugin/board.js.map
+plugin/index.js
+plugin/index.js.map
+plugin/*.css

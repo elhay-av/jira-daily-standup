@@ -1,0 +1,27 @@
+{
+  "author": "Elhay a",
+  "name": "Jira daily standup",
+  "description": "Chrome plugin to manage daily standup meeting with jira board",
+  "version": "1.0",
+  "background": {
+
+  },
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "https://*.atlassian.net/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://*.atlassian.net/*"],
+      "js": ["jquery-latest.min.js", "board.js"],
+      "css": ["board.css"]
+    }
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "browser_action": {
+    "default_icon": "img/logo.png",
+    "default_popup": "index.html"
+  },
+  "manifest_version": 2
+}

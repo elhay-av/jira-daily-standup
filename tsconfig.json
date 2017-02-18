@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "outDir": "./plugin/",
+    "sourceMap": true,
+    "pretty": true,
+    "noImplicitAny": true,
+    "allowJs": true,
+    "module": "System",
+    "target": "es5"
+  },
+  "include": [
+    "./ts/**/*"
+  ]
+}

@@ -1,0 +1,19 @@
+$btn-size: 30px;
+$filter-color: #3b73af;
+$filter-font-size: 14px;
+
+.jd-wrapper {
+	float: right;
+	height: $btn-size;
+
+	.jd-prev, .jd-next {
+		float: left;
+		min-width: $btn-size;
+		height: $btn-size;
+		line-height: $btn-size;
+		font-size: $filter-font-size;
+		color: $filter-color;
+		margin-right: 10px;
+		cursor: pointer;
+	}
+}

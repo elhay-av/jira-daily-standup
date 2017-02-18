@@ -1,0 +1,30 @@
+{
+  "extends" : [
+    "standard",
+    "standard-react"
+  ],
+  "plugins" : [
+    "flow-vars"
+  ],
+  "env": {
+    "browser" : true
+  },
+  "rules": {
+    "semi" : [1, "always"],
+    "space-infix-ops": 0,
+    "max-len": [2, 120, 2],
+    "flow-vars/define-flow-type": 1,
+    "flow-vars/use-flow-type": 1,
+    "no-multiple-empty-lines": [2, {"max": 3}],
+    "no-trailing-spaces": [2, { "skipBlankLines": true }],
+    "react/jsx-indent-props": 0,
+    "space-before-function-paren": 0,
+    "spaced-comment": 0,
+    "block-spacing": 1,
+    "no-console": 1,
+    "no-alert": 1,
+    "no-duplicate-imports": [2, { "includeExports": true }],
+    "no-useless-escape": 0,
+    "react/jsx-space-before-closing": 0
+  }
+}
