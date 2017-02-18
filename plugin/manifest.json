@@ -1,8 +1,8 @@
 {
   "author": "Elhay a",
   "name": "Jira daily standup",
-  "description": "Chrome plugin to manage daily standup meeting with jira board",
-  "version": "1.0",
+  "description": "Chrome plugin to manage daily standup meeting with Jira board",
+  "version": "1.0.1",
   "background": {
 
   },
