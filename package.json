@@ -1,0 +1,36 @@
+{
+  "name": "jira-daily-standup",
+  "version": "1.0.1",
+  "description": "Chrome plugin to manage daily standup meeting with jira board",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://elhay-av@github.com/elhay-av/jira-daily-standup.git"
+  },
+  "author": "elhayav@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elhay-av/jira-daily-standup/issues"
+  },
+  "homepage": "https://github.com/elhay-av/jira-daily-standup#readme",
+  "devDependencies": {
+    "@types/jquery": "^2.0.40",
+    "eslint": "3.11.1",
+    "eslint-config-standard": "6.2.1",
+    "eslint-config-standard-jsx": "3.2.0",
+    "eslint-import-resolver-node": "0.2.3",
+    "eslint-module-utils": "1.0.0",
+    "eslint-plugin-flow-vars": "0.5.0",
+    "eslint-plugin-flowtype": "2.29.1",
+    "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-jsx-a11y": "3.0.1",
+    "eslint-plugin-promise": "3.4.0",
+    "eslint-plugin-standard": "2.0.1",
+    "npm-bump": "0.0.20",
+    "tslint": "^4.4.2",
+    "typescript": "^2.1.6"
+  }
+}
