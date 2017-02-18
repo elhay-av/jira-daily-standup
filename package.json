@@ -11,7 +11,7 @@
     "url": "git+https://elhay-av@github.com/elhay-av/jira-daily-standup.git"
   },
   "author": "elhayav@gmail.com",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/elhay-av/jira-daily-standup/issues"
   },
