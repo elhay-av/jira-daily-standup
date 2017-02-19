@@ -1,12 +1,14 @@
+$extention-id: 'nbgggnfcdciadlbakdhhdnelekpokfmm';
 $btn-size: 30px;
 $filter-color: #3b73af;
 $filter-font-size: 14px;
+$timer-height: 40px;
 
 .jd-wrapper {
 	float: right;
 	height: $btn-size;
 
-	.jd-prev, .jd-next {
+	.jd-prev, .jd-next, .jd-play-pause-btn {
 		float: left;
 		min-width: $btn-size;
 		height: $btn-size;
@@ -15,5 +17,54 @@ $filter-font-size: 14px;
 		color: $filter-color;
 		margin-right: 10px;
 		cursor: pointer;
+	}
+
+	.jd-play-pause-btn {
+		background-size: 14px;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-image: url('chrome-extension://__MSG_@@extension_id__/img/play.svg');
+
+		&.jd-play {
+			background-image: url('chrome-extension://__MSG_@@extension_id__/img/pause.svg');
+		}
+	}
+}
+
+.jd-timer {
+	z-index: 999999;
+	height: $timer-height;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgba(255, 255, 255, .0);
+	display: none;
+
+	&.jd-play {
+		background-color: rgba(255, 255, 255, 1);
+		display: block;
+	}
+
+	.jd-sand-clock {
+		position: absolute;
+		height: $timer-height;
+		width: 100%;
+		z-index: 1;
+		background-color: #3b73af;
+		left: -99%;
+		transition: left linear 1s;
+	}
+
+	.jd-digits-clock {
+		position: absolute;
+		height: $timer-height;
+		width: 100%;
+		z-index: 2;
+		line-height: $timer-height;
+		text-align: center;
+		font-size: $timer-height - 10;
+		text-shadow: 0 0 10px rgba(255, 255, 255, 1);
+		font-family: sans-serif;
 	}
 }

@@ -11,5 +11,5 @@ Chrome plugin to manage daily standup meeting with Jira board
 
 ## Todo
 
-1. Adding Play button: in play mode each X time next filter will be selected.
-2. Display timer on top of page for Play mode. 
+1. ~~Adding Play button: in play mode each X time next filter will be selected.~~
+2. ~~Display timer on top of page for Play mode.~~
