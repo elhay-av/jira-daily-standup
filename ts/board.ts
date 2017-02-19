@@ -352,16 +352,14 @@ chrome.storage.sync.get('jd-duration', (storageValues: any) => {
     FILTER_DURATION = storageValues['jd-duration'];
 });
 
-(($) => {
-    $(window).on('load', () => {
-        let $quickfilters = $(quickFiltersSelector);
-        if(!$quickfilters.length) {
-            return;
-        }
+(() => {
+    let $quickfilters = jQuery(quickFiltersSelector);
+    if(!$quickfilters.length) {
+        return;
+    }
 
-        new DailyActions();
-    });
-})(jQuery);
+    new DailyActions();
+})();
 
 chrome.storage.onChanged.addListener(function(changes: any) {
 
