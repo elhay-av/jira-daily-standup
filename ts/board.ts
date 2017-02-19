@@ -299,6 +299,7 @@ class DailyActions {
 
     constructor() {
         this.next = this.next.bind(this);
+        this.onPluginFilterButtonClick = this.onPluginFilterButtonClick.bind(this);
 
         this.container = jQuery(DailyActions.containerSelector);
         this.container
@@ -307,6 +308,9 @@ class DailyActions {
         this.prevFilter = new ReplaceFilterBtn(true);
         this.nextFilter = new ReplaceFilterBtn(false);
         this.timer = new Timer(this.next);
+
+        this.prevFilter.getBtn().on('click', this.onPluginFilterButtonClick);
+        this.nextFilter.getBtn().on('click', this.onPluginFilterButtonClick);
 
         ReplaceFilterBtn
             .getFilters()
@@ -333,6 +337,14 @@ class DailyActions {
         }
 
         setTimeout(this.timer.start, 1000);
+    }
+
+    onPluginFilterButtonClick() {
+        if (this.timer.state) {
+            console.log('[onPluginFilterButtonClick] reset');
+            this.timer.reset();
+            this.timer.start();
+        }
     }
 }
 
