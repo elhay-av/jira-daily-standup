@@ -2,7 +2,7 @@
   "author": "Elhay a",
   "name": "Jira daily standup",
   "description": "Chrome plugin to manage daily standup meeting with Jira board",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "background": {
 
   },
@@ -23,7 +23,7 @@
     "img/play.svg",
     "img/pause.svg"
   ],
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://buttons.github.io; object-src 'self'",
   "browser_action": {
     "default_icon": "img/logo.png",
     "default_popup": "index.html"

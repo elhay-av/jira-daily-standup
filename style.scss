@@ -1,0 +1,32 @@
+.jd-form {
+	width: 200px;
+	margin: 0 auto;
+	text-align: center;
+
+	.jd-form-label {
+		font-size: 20px;
+	}
+
+	.jd-form-input {
+		text-align: center;
+		width: 200px;
+		height: 50px;
+		font-size: 40px;
+	}
+}
+
+.jd-git-hub-buttons {
+	width: 100%;
+	height: 40px;
+	text-align: center;
+	margin-top: 40px;
+
+	iframe:first-of-type {
+		width: 200px !important;
+		height: 40px !important;
+	}
+	iframe {
+		width: 120px !important;
+		height: 40px !important;
+	}
+}

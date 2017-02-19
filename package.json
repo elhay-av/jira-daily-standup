@@ -1,6 +1,6 @@
 {
   "name": "jira-daily-standup",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Chrome plugin to manage daily standup meeting with jira board",
   "main": "index.js",
   "scripts": {
