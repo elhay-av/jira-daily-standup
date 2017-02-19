@@ -45,3 +45,4 @@ plugin/*.css
 plugin/*.css.map
 plugin/*.zip
 .idea/workspace.xml
+.DS_Store
