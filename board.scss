@@ -4,6 +4,18 @@ $filter-color: #3b73af;
 $filter-font-size: 14px;
 $timer-height: 40px;
 
+.ghx-header-compact {
+	#ghx-view-pluggable {
+		float: left;
+		margin-right: 10px;
+	}
+}
+
+body#jira.ghx-header-compact {
+	#ghx-operations {
+		padding-right: 250px;
+	}
+}
 .jd-wrapper {
 	float: right;
 	height: $btn-size;

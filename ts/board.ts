@@ -1,7 +1,7 @@
 ///<reference path="../node_modules/@types/jquery/index.d.ts" />
 jQuery(() => {
     const cssPrefix = (prefix='') => 'jd-' + prefix;
-    const quickFiltersSelector = '#js-work-quickfilters';
+    const quickFiltersSelector = '.ghx-quick-content:visible';
     const activeFilterSelector = '.ghx-active';
     const STORAGE_KEY = 'jd-duration';
     let FILTER_DURATION = 30;
