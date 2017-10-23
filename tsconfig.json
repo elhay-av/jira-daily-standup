@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "./plugin/",
-    "sourceMap": true,
+    "sourceMap": false,
     "pretty": true,
     "noImplicitAny": true,
     "allowJs": true,

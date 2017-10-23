@@ -1,6 +1,7 @@
 ///<reference path="../node_modules/@types/jquery/index.d.ts" />
 declare const chrome: any;
 (() => {
+	debugger;
     const STORAGE_KEY = 'jd-duration';
 
     chrome.storage.sync.get(STORAGE_KEY, (storageValues: any) => {

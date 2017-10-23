@@ -1,8 +1,9 @@
 ///<reference path="../node_modules/@types/jquery/index.d.ts" />
 jQuery(() => {
     const cssPrefix = (prefix='') => 'jd-' + prefix;
-    const quickFiltersSelector = '.ghx-quick-content:visible';
-    const activeFilterSelector = '.ghx-active';
+	const quickFiltersSelector = '#ghx-quick-filters:visible';
+	const quickFilterSelector = '#quickFilterList>ul>li';
+    const activeFilterSelector = '.checked';
     const STORAGE_KEY = 'jd-duration';
     let FILTER_DURATION = 30;
 
@@ -236,6 +237,7 @@ jQuery(() => {
         isPrev: boolean;
         className: string;
         $btn: JQuery;
+        filtersIds: string[] = [];
 
         constructor(isPrev: boolean) {
             this.isPrev = isPrev;
@@ -248,6 +250,7 @@ jQuery(() => {
             this.$btn = jQuery(`<div class="${this.className}">`);
             this.$btn.on('click', this.onClick);
 
+	        ReplaceFilterBtn.getFilters().map((key, filter) => this.filtersIds.push(filter.id));
             this.updateText();
         }
 
@@ -263,7 +266,7 @@ jQuery(() => {
             const filters = ReplaceFilterBtn.getFilters();
             const filterIndex = this.getFilterIndex(filters);
 
-            return jQuery(filters[filterIndex]);
+            return jQuery(filters.filter('#' + this.filtersIds[filterIndex]));
         }
 
         replaceFilter() {
@@ -284,29 +287,28 @@ jQuery(() => {
         }
 
         private getSelected(filters: JQuery) {
-            return jQuery(filters).has('a' + activeFilterSelector);
+            return jQuery(filters).has('label' + activeFilterSelector);
         }
 
         private clickOnFilter(filter: Element, wait=0) {
-            setTimeout(() => jQuery(filter).find('a')[0].click(), wait);
+            setTimeout(() => jQuery(filter).click(), wait);
         }
 
         static getFilters() {
-            return jQuery(`${quickFiltersSelector} dd`)
-                .has('a.js-quickfilter-button');
+	        return jQuery(`${quickFiltersSelector} ${quickFilterSelector}`).filter((key, item) => item.id);
         }
 
         private getFilterIndex(filters: JQuery) {
             const selected = this.getSelected(filters);
-            const lastSelectedIndex = selected.last().index();
-            let nextIndex = this.isPrev ? lastSelectedIndex - 2 : lastSelectedIndex;
+            const lastSelectedIndex = this.filtersIds.indexOf(selected.last().attr('id'));
+            let nextIndex = this.isPrev ? lastSelectedIndex - 1 : lastSelectedIndex + 1;
             let lastFilter = filters.length - 1;
 
-            if (lastSelectedIndex === -1) {
+	        if (lastSelectedIndex === -1) {
                 return this.isPrev? 0: lastFilter;
             }
 
-            if (nextIndex >= filters.length) {
+            if (nextIndex > filters.length) {
                 return 0;
             }
 
@@ -348,7 +350,6 @@ jQuery(() => {
 
             ReplaceFilterBtn
                 .getFilters()
-                .find('a')
                 .on('click', () => {
                     this.nextFilter.updateText();
                     this.prevFilter.updateText();
