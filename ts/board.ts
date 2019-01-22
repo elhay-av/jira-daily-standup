@@ -234,6 +234,8 @@ jQuery(() => {
 
     class ReplaceFilterBtn {
         static replaceFilterTimeout = 500;
+        static $filters: JQuery;
+        static predefineFilters: Array<string> = ['Recently Updated', 'Done', 'Not Done', 'Only My Issues'];
         isPrev: boolean;
         className: string;
         $btn: JQuery;
@@ -246,11 +248,12 @@ jQuery(() => {
             this.updateText = this.updateText.bind(this);
             this.replaceFilter = this.replaceFilter.bind(this);
 
+            ReplaceFilterBtn.setFilters();
             this.className = isPrev? `${cssPrefix()}prev`: `${cssPrefix()}next`;
             this.$btn = jQuery(`<div class="${this.className}">`);
             this.$btn.on('click', this.onClick);
 
-	        ReplaceFilterBtn.getFilters().map((key, filter) => this.filtersIds.push(filter.id));
+	        ReplaceFilterBtn.$filters.map((key, filter) => this.filtersIds.push(filter.id));
             this.updateText();
         }
 
@@ -263,14 +266,14 @@ jQuery(() => {
         }
 
         getFilter() {
-            const filters = ReplaceFilterBtn.getFilters();
+            const filters = ReplaceFilterBtn.$filters;
             const filterIndex = this.getFilterIndex(filters);
 
             return jQuery(filters.filter('#' + this.filtersIds[filterIndex]));
         }
 
         replaceFilter() {
-            const filters = ReplaceFilterBtn.getFilters();
+            const filters = ReplaceFilterBtn.$filters;
             const selected = this.getSelected(filters);
             let nextIndex = this.getFilterIndex(filters);
 
@@ -280,7 +283,7 @@ jQuery(() => {
         }
 
         isLast() {
-            const filters = ReplaceFilterBtn.getFilters();
+            const filters = ReplaceFilterBtn.$filters;
             const filterIndex = this.getFilterIndex(filters);
 
             return (filterIndex === filters.length - 1);
@@ -294,8 +297,10 @@ jQuery(() => {
             setTimeout(() => jQuery(filter).click(), wait);
         }
 
-        static getFilters() {
-	        return jQuery(`${quickFiltersSelector} ${quickFilterSelector}`).filter((key, item) => item.id);
+        static setFilters() {
+            ReplaceFilterBtn.$filters = jQuery(`${quickFiltersSelector} ${quickFilterSelector}`)
+                .filter((key, item) => item.id)
+                .filter((key, item) => ReplaceFilterBtn.predefineFilters.indexOf(jQuery(item).text()) === -1);
         }
 
         private getFilterIndex(filters: JQuery) {
@@ -334,6 +339,7 @@ jQuery(() => {
         timer: Timer;
 
         constructor() {
+            jQuery('.' + DailyActions.className).remove();
             this.next = this.next.bind(this);
             this.onPluginFilterButtonClick = this.onPluginFilterButtonClick.bind(this);
 
@@ -348,8 +354,7 @@ jQuery(() => {
             this.prevFilter.getBtn().on('click', this.onPluginFilterButtonClick);
             this.nextFilter.getBtn().on('click', this.onPluginFilterButtonClick);
 
-            ReplaceFilterBtn
-                .getFilters()
+            ReplaceFilterBtn.$filters
                 .on('click', () => {
                     this.nextFilter.updateText();
                     this.prevFilter.updateText();
